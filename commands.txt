@@ -1,0 +1,12 @@
+kubectl create deployment nginx-deployment --image=nginx --replicas=1
+kubectl get deployment
+kubectl get pods
+kubectl scale deployment nginx-deployment --replicas=3
+kubectl expose deployment nginx-deployment --port=80 --target-port=80 --type=ClusterIP
+kubectl get pods -o wide
+kubectl exec -ti nginx-deployment-c45d79c8-d8z7t -- bash
+pod# kill 1
+pod# exit
+kubectl get pods	==> 3 running
+kubectl delete pod -l app=nginx-deployment
+kubectl get po		==> 3 are running
